@@ -2,6 +2,7 @@ package org.example;
 import java.time.LocalDate;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Transaction {
@@ -60,9 +61,17 @@ public class Transaction {
         this.amount = amount;
     }
 
-
-
-
-
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return String.format(
+                "%s|%s|%s|%s|%.2f",
+                date.toString(),
+                time.format(formatter),
+                description,
+                vendor,
+                amount
+        );
     }
+}
 
