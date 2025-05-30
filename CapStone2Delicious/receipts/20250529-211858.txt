@@ -1,0 +1,14 @@
+Order Summary 
+Sandwich Size: 4"
+Toppings:
+ - steak(extra meat)- $1.5
+ - american(extra cheese)- $1.05
+ - PEPPERS(included)
+ - ONIONS(included)
+ - MAYO (sauce)
+ - MUSTARD (sauce)
+Total Price: $8.05
+lays Chips - $1.50
+SMALLnullDrinks - $2.0
+
+11.55

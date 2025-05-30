@@ -4,10 +4,11 @@ import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 
-import static sun.awt.CGraphicsEnvironment.init;
+//import static sun.awt.CGraphicsEnvironment.init;
 
 public class UserInterface {
     Dealership dealership;
+    DealershipFileManager dealershipFileManager;
 
     public void display() {
 
@@ -64,8 +65,6 @@ public class UserInterface {
                 case 10:
 
 
-
-
                 case 0:
                     System.exit(10);
                     break;
@@ -78,7 +77,7 @@ public class UserInterface {
     }
 
     private void init() {
-        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager = new DealershipFileManager();
         dealership = dealershipFileManager.getDealership();
     }
 
@@ -87,7 +86,7 @@ public class UserInterface {
         double min = scanner.nextDouble();
         System.out.println("Enter maximum price:");
         double max = scanner.nextDouble();
-        helperMethod(dealership.getVehiclesByPrice(min,max));
+        helperMethod(dealership.getVehiclesByPrice(min, max));
     }
 
     private void getByMakeModel(Scanner scanner) {
@@ -96,14 +95,14 @@ public class UserInterface {
         String make = scanner.nextLine().toLowerCase();
         System.out.println("Enter vehicle model");
         String model = scanner.nextLine().toLowerCase();
-       helperMethod(dealership.getVehicleByMakeModel(make, model));
+        helperMethod(dealership.getVehicleByMakeModel(make, model));
     }
 
     private void getByColor(Scanner scanner) {
         scanner.nextLine();
         System.out.println("Enter vehicle color");
         String color = scanner.nextLine().toLowerCase();
-        if(dealership.getVehicleByColor(color).isEmpty()){
+        if (dealership.getVehicleByColor(color).isEmpty()) {
             System.out.println("color not found");
         }
         helperMethod(dealership.getVehicleByColor(color));
@@ -114,7 +113,7 @@ public class UserInterface {
         double min = scanner.nextDouble();
         System.out.println("Enter maximum mileage");
         double max = scanner.nextDouble();
-        helperMethod(dealership.getVehicleByMileage(min,max));
+        helperMethod(dealership.getVehicleByMileage(min, max));
     }
 
     private void getByYear(Scanner scanner) {
@@ -135,15 +134,15 @@ public class UserInterface {
     private void getVehicleList() {
         List<Vehicle> vehicles = dealership.getAllVehicles();
         System.out.println("All vehicles in inventory");
-        if(vehicles.isEmpty()){
+        if (vehicles.isEmpty()) {
             System.out.println("No vehicles available in inventory");
-        }else{
+        } else {
             helperMethod(vehicles);
 
         }
     }
 
-    private void addVehicles(Scanner scanner){
+    private void addVehicles(Scanner scanner) {
         System.out.println("Enter VIN number");
         int vin = scanner.nextInt();
         scanner.nextLine();
@@ -165,10 +164,11 @@ public class UserInterface {
         double price = scanner.nextDouble();
         scanner.nextLine();
         dealership.addVehicle(new Vehicle(vin, year, make, model, type, color, mileage, price));
+        dealershipFileManager.saveDealerShip(dealership);
         System.out.println("Vehicle has been added successfully");
     }
 
-    private void removeVehicles(Scanner scanner){
+    private void removeVehicles(Scanner scanner) {
         System.out.println("Enter VIN number");
         int vin2 = scanner.nextInt();
         scanner.nextLine();
@@ -190,40 +190,23 @@ public class UserInterface {
         double price2 = scanner.nextDouble();
         scanner.nextLine();
         System.out.println("vehicle has been removed");
-        DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        dealership.removeVehicle(new Vehicle(vin2, year2, make2, model2, type2,color2,mileage2,price2));
-        dealershipFileManager.saveDealerShip(dealership.getAllVehicles());
+
+        dealership.removeVehicle(new Vehicle(vin2, year2, make2, model2, type2, color2, mileage2, price2));
+        dealershipFileManager.saveDealerShip(dealership);
     }
 
-    private void helperMethod(List<Vehicle> vehicles){
-        for(int i=0; i<vehicles.size(); i++){
+    private void helperMethod(List<Vehicle> vehicles) {
+        for (int i = 0; i < vehicles.size(); i++) {
             System.out.println(vehicles.get(i).toString());
         }
-        }
-        public void saleOrLeasVehicle(Scanner scanner){
-            System.out.println("do you want to sale or leas");
-            System.out.println("1)vehicle for sale");
-            System.out.println("2) vehicle for lease");
-            int choice = scanner.nextInt();
-            int finance = 0;
-            if(choice == 1) {
-                System.out.println("do you want to finance? 1) yes 2) no");
-                finance = scanner.nextInt();
-            }
-            System.out.println("what is your name");
-            String name = scanner.nextLine();
-            System.out.println("what is your email");
-            String email = scanner.nextLine();
-
-            try {
-                if(choice ==1){
-                    s
-                }
-
-            }
-
-        }
-
-
     }
+
+    private void saleCar(String name, String date, String email, Vehicle vehicle){
+        ContractFileManager contractFileManager = new ContractFileManager();
+        SalesContract salesContract = new SalesContract()
+    }
+
+}
+
+
 

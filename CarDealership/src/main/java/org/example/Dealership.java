@@ -52,22 +52,39 @@ public class Dealership {
 
     public List<Vehicle> getVehiclesByPrice(double min, double max) {
         List<Vehicle> vehicles = new ArrayList<>();
-        for (int i = 0; i < inventory.size(); i++) {
-            Vehicle vehicle = inventory.get(i);
+
+//        for (int i = 0; i < inventory.size(); i++) {
+//            Vehicle vehicle = inventory.get(i);
+//            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
+//                vehicles.add(vehicle);
+//            }
+//        }
+
+        //enhanced
+        for(Vehicle vehicle: inventory){
             if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
-                vehicles.add(inventory.get(i));
+                vehicles.add(vehicle);
             }
         }
+
+
+
         return vehicles;
     }
 
     public List<Vehicle> getVehicleByMakeModel(String make, String model) {
         List<Vehicle> vehicles = new ArrayList<>();
-        for (int i = 0; i < inventory.size(); i++) {
-            Vehicle vehicle = inventory.get(i);
-            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) ;
-            vehicles.add(inventory.get(i));
 
+//        for (int i = 0; i < inventory.size(); i++) {
+//            Vehicle vehicle = inventory.get(i);
+//            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model));
+//            vehicles.add(inventory.get(i));
+//        }
+
+        for(Vehicle vehicle: inventory){
+            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
+                vehicles.add(vehicle);
+            }
         }
         return vehicles;
 
@@ -95,6 +112,7 @@ public class Dealership {
         }
         return vehicles;
     }
+
     public List<Vehicle> getVehicleByMileage(double min, double max){
         List<Vehicle> vehicles = new ArrayList<>();
         for(int i = 0; i <inventory.size(); i++){

@@ -1,0 +1,8 @@
+Order SummarySandwich Size: 4"
+Toppings:
+ - steak
+ - swiss(extra cheese)- $1.05
+ - LETTUCE(included)
+ - PICKLES(included)
+ - MAYO (sauce)
+Total Price: $8.058.05

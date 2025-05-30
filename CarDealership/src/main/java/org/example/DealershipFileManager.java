@@ -43,14 +43,18 @@ public class DealershipFileManager {
         }
         return null;
     }
-    public void saveDealerShip(List<Vehicle> VehicleList){
+    public void saveDealerShip(Dealership dealership){
         try{
             File file = new File("src/main/resources/inventory.csv");
             FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write("D & B Used Cars|111 Old Benbrook Rd|817-555-5555\n");
-            for (Vehicle vehicle : VehicleList){
-                fileWriter.write(vehicle.toString().trim() + "/n");
+
+            fileWriter.write(dealership.getName()+"|"+dealership.getAddress()+"|"+dealership.getPhone()+"\n");
+
+            for (Vehicle vehicle :dealership.getAllVehicles()){
+                fileWriter.write(vehicle.toString().trim() + "\n");
+                System.out.println(vehicle);
             }
+
             fileWriter.close();
 
             //FileWriter fileWriter = new FileWriter("src/main/resources/inventory.csv");
@@ -77,57 +81,6 @@ public class DealershipFileManager {
         }
     }
 
-    public void saveContract(Contract contract){
-        try{
-            FileWriter fileWriter = new FileWriter("src/main/resources/inventory.csv", true);
-            BufferedWriter writer = new BufferedWriter(fileWriter);
-            Vehicle vehicle = contract.getVehicleSold();
-            if(contract instanceof SalesContract){
-                SalesContract salesContract = (SalesContract)contract;
-                writer.write("Sale" + contract.getDate() + "|" +
-                        contract.getCustomerName() + "|" +
-                        contract.getCustomerEmail() + "|" +
-                        vehicle.getVin() + "|" +
-                        vehicle.getYear() + "|" +
-                        vehicle.getMake() + "|" +
-                        vehicle.getModel() + "|" +
-                        vehicle.getVehicleType() + "|" +
-                        vehicle.getColor() + "|" +
-                        vehicle.getOdometer() + "|" +
-                        vehicle.getPrice() + "|" +
-                        salesContract.getSalesTax()+ "|" +
-                        salesContract.getRecordingFee() + "|" +
-                        salesContract.getProcessingFee() + "|" +
-                        salesContract.getTotalPrice() + "|" + (salesContract.isFinance() ? "Yes" : "NO") + "|" +
-                        salesContract.getMonthlyPayment());
-            }
-            else if (contract instanceof LeaseContract){
-                LeaseContract lease = (LeaseContract) contract;
-                writer.write("Lease|" + contract.getDate() + "|" +
-                        contract.getDate() + "|" +
-                        contract.getCustomerName() + "|" +
-                        contract.getCustomerEmail() + "|" +
-                        vehicle.getVin() + "|" +
-                        vehicle.getYear() + "|" +
-                        vehicle.getMake() + "|" +
-                        vehicle.getModel() + "|" +
-                        vehicle.getVehicleType() + "|" +
-                        vehicle.getColor() + "|" +
-                        vehicle.getOdometer() + "|" +
-                                vehicle.getPrice() + "|" +
-                        lease.getExpectingEndingValue() + "|" +
-                        lease.getLeaseFee() + "|" +
-                        lease.getTotalPrice() + "|" +
-                        lease.getMonthlyPayment());
-            }
-            writer.newLine();
-            writer.close();
-
-        }catch (IOException e){
-            System.out.println("Error Saving Contract");
-
-        }
-    }
 
 }
 

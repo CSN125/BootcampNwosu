@@ -1,0 +1,13 @@
+Order Summary 
+Sandwich Size: 4"
+Toppings:
+ - steak
+ - swiss(extra cheese)- $1.05
+ - LETTUCE(included)
+ - PEPPERS(included)
+ - MAYO (sauce)
+Total Price: $8.05
+lays Chips - $1.50
+SMALLnullDrinks - $2.0
+
+11.55
