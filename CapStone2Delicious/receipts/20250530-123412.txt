@@ -1,0 +1,14 @@
+Order Summary 
+Sandwich Size: 4"
+Toppings:
+ - steak(extra meat)- $1.5
+ - swiss(extra cheese)- $1.05
+ - LETTUCE(included)
+ - ONIONS(included)
+ - PICKLES(included)
+ - MAY (sauce)
+Total Price: $8.05
+lays Chips - $1.50
+SMALL COKE - $2.0
+
+11.55
